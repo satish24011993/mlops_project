@@ -1,0 +1,24 @@
+docker command to build:
+docker build -t mlops .
+
+docker command to run:
+docker run -p 5001:5001 mlops
+
+curl -X POST http://127.0.0.1:5001/predict -H "Content-Type: application/json" -d "{\"features\": [8.3252, 41, 6.984, 1.023, 322, 2.555, 37.88, -122.23]}"
+
+
+minikube and kubernetes:
+
+minikube start
+
+eval $(minikube docker-env)
+
+docker build -t mlops .
+
+kubectl apply -f deployment.yaml
+
+kubectl apply -f service.yaml
+
+To get external ipaddress:
+
+minikube service mlops-service --url
